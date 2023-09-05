@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ReportTryRequest from '../api-access/reportTry';
 
 const ReportTry = () => {
     return (

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Test from '../api-access/test';
+import GetCycleRequest from '../api-access/getCycle';
 
 const Top = () => {
     return (
