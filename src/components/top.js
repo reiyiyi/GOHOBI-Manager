@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Test from '../api-access/test';
 
 const Top = () => {
     return (
@@ -11,6 +12,8 @@ const Top = () => {
             <Link to='/cycle/create'>サイクルを作る </Link>
             <Link to='/report/try'>時間を報告する </Link>
             <Link to='/report/gohobi'>使ったご褒美を報告する </Link>
+            <p>APIテスト</p>
+            <p>{Test()}</p>
         </div>
     );
   };
