@@ -1,25 +1,30 @@
-import logo from './logo.svg';
+import React from 'react';
+import { Routes, Route } from "react-router-dom";
 import './App.css';
+import Top from './components/top';
+import Login from './components/login';
+import Signup from './components/signup';
+import CreateCycle from './components/createCycle';
+import ReportTry from './components/reportTry';
+import ReportGohobi from './components/reportGohobi';
+import Logout from './components/logout';
+import Navbar from './components/navbar';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    return (
+        <div className="App">
+            <Navbar />
+            <Routes>
+                <Route path="/" element={<Top />}></Route>
+                <Route path="/login" element={<Login />}></Route>
+                <Route path="/signup" element={<Signup />}></Route>
+                <Route path="/cycle/create" element={<CreateCycle />}></Route>
+                <Route path="/report/try" element={<ReportTry />}></Route>
+                <Route path="/report/gohobi" element={<ReportGohobi />}></Route>
+                <Route path="/logout" element={<Logout />}></Route>
+            </Routes>
+        </div>
+    );
+};
 
 export default App;
