@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import LogoutRequest from '../api-access/logout';
 
 const Logout = () => {
     return (

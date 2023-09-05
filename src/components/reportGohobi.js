@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ReportGohobiRequest from '../api-access/reportGohobi';
 
 const ReportGohobi = () => {
     return (
