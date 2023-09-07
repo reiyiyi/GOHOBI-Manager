@@ -30,12 +30,13 @@ resource "aws_iam_role_policy" "lambda_role_policy" {
         Effect = "Allow"
         Action = [
           "dynamodb:GetItem",
-          "dynamodb:Query",
           "dynamodb:PutItem",
-          "dynamodb:UpdateItem"
+          "dynamodb:UpdateItem",
+          "dynamodb:Query"
         ]
         Resource = [
-          var.data_list_table-arn
+          "${var.data_list_table-arn}",
+          "${var.data_list_table-arn}/index/*"
         ]
       }
     ]

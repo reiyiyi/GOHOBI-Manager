@@ -2,11 +2,11 @@ variable "prefix" {
   type = string
 }
 
-variable "filename" {
+variable "data_list_table-name" {
   type = string
 }
 
-variable "data_list_table-name" {
+variable "data_list_session-index-name" {
   type = string
 }
 
