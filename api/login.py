@@ -74,7 +74,7 @@ def login_check(user_id, password):
         return False
     
 
-def handler(event, context):
+def LoginAPI(event, context):
     request_body = eval(event["body"])
     user_id = request_body["user_id"]
     password = request_body["password"]
