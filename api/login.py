@@ -73,9 +73,8 @@ def login_check(user_id, password):
     else:
         return False
     
-
-def LoginAPI(event, context):
-    request_body = eval(event["body"])
+    
+def LoginAPI(request_body):
     user_id = request_body["user_id"]
     password = request_body["password"]
     
@@ -95,6 +94,6 @@ def LoginAPI(event, context):
             'statusCode': 200,
             'body': json.dumps({
                 'status': False,
-                'session': None,
+                'session': "",
             })
         }
