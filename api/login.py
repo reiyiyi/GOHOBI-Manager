@@ -21,7 +21,7 @@ def create_session(user_id):
             IndexName = SESSION_INDEX_NAME,
             KeyConditionExpression = "#se = :val",
             ExpressionAttributeNames= {
-            '#se' : 'Session',
+                '#se' : 'Session',
             },
             ExpressionAttributeValues={":val": {"S": session}},
         )
@@ -40,7 +40,7 @@ def create_session(user_id):
             },
             UpdateExpression="SET #se = :val",
             ExpressionAttributeNames= {
-            '#se' : 'Session',
+                '#se' : 'Session',
             },
             ExpressionAttributeValues={":val": {"S": session}},
         )
@@ -68,7 +68,7 @@ def login_check(user_id, password):
         return False
     # パスワードが合っているかを確認する
     hashed_password = hashing(password)
-    if response["Item"]["hashedPassword"] == hashed_password:
+    if response["Item"]["hashedPassword"]["S"] == hashed_password:
         return True
     else:
         return False

@@ -29,7 +29,7 @@ def get_user_id(session):
     if not response["Items"]:
         return ""
     
-    return response["Items"][0]["userId"]
+    return response["Items"][0]["userId"]["S"]
     
 
 def handler(event, context):

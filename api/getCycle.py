@@ -16,11 +16,11 @@ def GetCycleAPI(user_id, request_body):
         }
     )
     
-    total_time = response["Item"]["totalTime"]
-    time_ = response["Item"]["time"]
-    total_used_gohobi = response["Item"]["totalUsedGohobi"]
-    try_ = response["Item"]["try"]
-    gohobi = response["Item"]["gohobi"]
+    total_time = int(response["Item"]["totalTime"]["N"])
+    time_ = int(response["Item"]["time"]["N"])
+    total_used_gohobi = int(response["Item"]["totalUsedGohobi"]["N"])
+    try_ = response["Item"]["try"]["S"]
+    gohobi = response["Item"]["gohobi"]["S"]
     
     # サイクルが生成されていない場合
     if not try_:

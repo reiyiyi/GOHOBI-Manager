@@ -7,9 +7,9 @@ SESSION_INDEX_NAME = os.getenv('SESSION_INDEX_NAME')
 dynamodb = boto3.client('dynamodb')
 
 def CreateCycleAPI(user_id, request_body):
-    try_ = request_body["try"]
-    time_ = request_body["time"]
-    gohobi = request_body["gohobi"]
+    try_ = request_body["try"]["S"]
+    time_ = int(request_body["time"]["N"])
+    gohobi = request_body["gohobi"]["S"]
     
     response = dynamodb.update_item(
         TableName=TABLE_NAME,
@@ -26,10 +26,10 @@ def CreateCycleAPI(user_id, request_body):
         },
         ExpressionAttributeValues = {
             ":val1": {"S": try_},
-            ":val2": {"N": time_},
+            ":val2": {"N": str(time_)},
             ":val3": {"S": gohobi},
-            ":val4": {"N": 0},
-            ":val5": {"N": 0},
+            ":val4": {"N": "0"},
+            ":val5": {"N": "0"},
         },
     )
     

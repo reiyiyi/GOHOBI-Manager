@@ -43,10 +43,10 @@ def SignupAPI(request_body):
                 "hashedPassword": {"S": hashed_password},
                 "session": {"S": ""},
                 "try": {"S": ""},
-                "time": {"N": 0},
+                "time": {"N": "0"},
                 "gohobi": {"S": ""},
-                "totalTime": {"N": 0},
-                "totalUsedGohobi": {"N": 0},
+                "totalTime": {"N": "0"},
+                "totalUsedGohobi": {"N": "0"},
             }
         )
         return {
