@@ -39,6 +39,12 @@ def GetCycleAPI(user_id, request_body):
         
     return {
         'statusCode': 200,
+        "headers": {
+            "Access-Control-Allow-Headers": "Content-Type",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "OPTIONS,POST",
+            #"Access-Control-Allow-Credentials": 'true'
+        },
         'body': json.dumps({
             'status': True,
             'is_created': True,

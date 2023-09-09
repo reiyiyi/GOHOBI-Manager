@@ -84,6 +84,12 @@ def LoginAPI(request_body):
         session = create_session(user_id)
         return {
             'statusCode': 200,
+            "headers": {
+                "Access-Control-Allow-Headers": "Content-Type",
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "OPTIONS,POST",
+                #"Access-Control-Allow-Credentials": 'true'
+            },
             'body': json.dumps({
                 'status': True,
                 'session': session,
@@ -92,6 +98,12 @@ def LoginAPI(request_body):
     else:
         return {
             'statusCode': 200,
+            "headers": {
+                "Access-Control-Allow-Headers": "Content-Type",
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "OPTIONS,POST",
+                #"Access-Control-Allow-Credentials": 'true'
+            },
             'body': json.dumps({
                 'status': False,
                 'session': "",
