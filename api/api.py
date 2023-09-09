@@ -51,7 +51,15 @@ def handler(event, context):
     if not user_id:
         return {
             'statusCode': 200,
-            'body': json.dumps({"message":"Please login."})
+            "headers": {
+                "Access-Control-Allow-Headers": "Content-Type",
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "OPTIONS,POST",
+                #"Access-Control-Allow-Credentials": 'true'
+            },
+            'body': json.dumps({
+                "message":"Please login."
+            })
         }
     
     # サイクル情報の取得処理を行なうAPI
@@ -76,5 +84,13 @@ def handler(event, context):
     
     return {
         'statusCode': 200,
-        'body': json.dumps({"message":"f{request_api_name} does not exist."})
+        "headers": {
+            "Access-Control-Allow-Headers": "Content-Type",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "OPTIONS,POST",
+            #"Access-Control-Allow-Credentials": 'true'
+        },
+        'body': json.dumps({
+            "message":"f{request_api_name} does not exist."
+        })
     }
