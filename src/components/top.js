@@ -1,20 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Test from '../api-access/test';
+import GetSession from '../api-access/getSession';
 import GetCycleRequest from '../api-access/getCycle';
 
 const Top = () => {
-    var session = ''
-    if (document.cookie != '') {
-        var cookies = document.cookie.split('; ');
-        for (var i = 0; i < cookies.length; i++) {
-            var cookie_data = cookies[i].split('=');
-            if (cookie_data[0] == 'session') {
-                session = decodeURIComponent(cookie_data[1]);
-                break;
-            }
-        }
-    }
+    var session = GetSession()
     const data = GetCycleRequest(session)
     return (
         <div>
