@@ -21,13 +21,7 @@ const Top = () => {
             {'status' in data ?
                 (
                     <div>
-                        <Link to='/login'>ログイン </Link>
-                        <Link to='/signup'>新規登録 </Link>
-                    </div>
-                )
-                :
-                (
-                    <div>
+                        <h4 className="my-3">TOP</h4>
                         {
                             data.is_created == true ?
                                 (<div>
@@ -40,6 +34,13 @@ const Top = () => {
                                 (<Link to='/cycle/create'>サイクルを作ってみる！ </Link>)
                         }
 
+                    </div>
+                )
+                :
+                (
+                    <div>
+                        <Link to='/login'>ログイン </Link>
+                        <Link to='/signup'>新規登録 </Link>
                     </div>
                 )
             }
