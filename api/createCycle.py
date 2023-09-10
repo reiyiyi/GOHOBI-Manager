@@ -7,21 +7,23 @@ SESSION_INDEX_NAME = os.getenv('SESSION_INDEX_NAME')
 dynamodb = boto3.client('dynamodb')
 
 def CreateCycleAPI(user_id, request_body):
-    try_ = request_body["try"]["S"]
-    time_ = int(request_body["time"]["N"])
-    gohobi = request_body["gohobi"]["S"]
+    try_ = request_body["try"]
+    time_ = request_body["time"]
+    gohobi = request_body["gohobi"]
     
     response = dynamodb.update_item(
         TableName=TABLE_NAME,
         Key={
             "userId": {
                 "S": user_id
+            },
+            "cycleId": {
+                "S": "user_cycle"
             }
         },
-        # ここら辺書き直して、cycleIdとかも更新する必要あるから
         UpdateExpression="SET #tr = :val1, #ti = :val2, gohobi = :val3, totalTime = :val4, totalUsedGohobi = :val5",
         ExpressionAttributeNames = {
-          '#ty' : 'try',
+          '#tr' : 'try',
           '#ti' : 'time'
         },
         ExpressionAttributeValues = {

@@ -10,8 +10,11 @@ def GetCycleAPI(user_id, request_body):
     response = dynamodb.get_item(
         TableName=TABLE_NAME,
         Key={
-            'userId': {
-                'S': user_id
+            "userId": {
+                "S": user_id
+            },
+            "cycleId": {
+                "S": "user_cycle"
             }
         }
     )
@@ -26,13 +29,19 @@ def GetCycleAPI(user_id, request_body):
     if not try_:
         return {
             'statusCode': 200,
+            "headers": {
+                "Access-Control-Allow-Headers": "Content-Type",
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "OPTIONS,POST",
+                #"Access-Control-Allow-Credentials": 'true'
+            },
             'body': json.dumps({
                 'status': True,
                 'is_created': False,
             })
         }
     
-    required_time = total_time % time_
+    required_time = time_ - total_time % time_
     if required_time == 0:
         required_time = time_
     unused_gohobi = total_time // time_ - total_used_gohobi
