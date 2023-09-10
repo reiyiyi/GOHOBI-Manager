@@ -37,23 +37,26 @@ const CreateCycle = () => {
 
     return (
         <div>
-            <h4 className="my-3">サイクルを作ろう</h4>
+            <h4 className="my-3">サイクルを作ってみよう！</h4>
             <div className="container">
                 <form onSubmit={doSubmit}>
                     <div className="form-group">
                         <input type="text" className="form-control"
                             onChange={doChangeTry} />
                     </div>
+                    <p>を</p>
                     <div className="form-group">
                         <input type="number" className="form-control"
                             onChange={doChangeTime} />
                     </div>
+                    <p>分がんばったら...</p>
                     <div className="form-group">
                         <input type="text" className="form-control"
                             onChange={doChangeGohobi} />
                     </div>
-                    <input type="submit" className="btn btn-primary"
-                        value="Click" />
+                    <p>のごほうびをGETする！</p>
+                    <input type="submit" className="btn btn-success"
+                        value="これで作る！" />
                 </form>
             </div>
         </div>

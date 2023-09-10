@@ -15,10 +15,12 @@ const Top = () => {
                         {
                             data.is_created == true ?
                                 (<div>
-                                    <p>{data.try}をあと{data.requiredTime}分頑張ったら{data.gohobi}GET!!</p>
-                                    <Link to='/cycle/create'>サイクルを作り直す</Link>
-                                    <Link to='/report/try'>がんばりを報告する</Link>
-                                    <Link to='/report/gohobi'>使ったごほうびを報告する</Link>
+                                    <p>{data.try}をがんばっていこう！</p>
+                                    <p>今は{data.gohobi}ごほうびが{data.unusedGohobi}回分残っているよ！</p>
+                                    <p>次の{data.gohobi}ごほうびGETまであと{data.requiredTime}分！</p>
+                                    <Link className="btn btn-success" to='/report/try'>がんばりを報告する！</Link>
+                                    <Link className="btn btn-success" to='/report/gohobi'>使ったごほうびを報告する！</Link>
+                                    <Link className="btn btn-danger" to='/cycle/create'>サイクルを作り直す</Link>
                                 </div>)
                                 :
                                 (<Link to='/cycle/create'>サイクルを作ってみる！ </Link>)
@@ -29,8 +31,8 @@ const Top = () => {
                 :
                 (
                     <div>
-                        <Link to='/login'>ログイン </Link>
-                        <Link to='/signup'>新規登録 </Link>
+                        <Link className="btn btn-success" to='/login'>ログイン </Link>
+                        <Link className="btn btn-success" to='/signup'>新規登録 </Link>
                     </div>
                 )
             }
