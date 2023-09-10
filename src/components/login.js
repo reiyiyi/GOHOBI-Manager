@@ -14,8 +14,12 @@ const Login = () => {
         setPassword(event.target.value)
     }
 
-    const doSubmit = (event) => {
-        const data = LoginRequest(user_id, password)
+    const doSubmit = async (event) => {
+        event.preventDefault();
+        const data = await LoginRequest(user_id, password)
+        .then(data => {
+            return data
+        })
         if(data.status == true){
             document.cookie = 'session=' + data.session;
             navigate('/')

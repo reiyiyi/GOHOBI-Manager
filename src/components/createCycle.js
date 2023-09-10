@@ -19,9 +19,13 @@ const CreateCycle = () => {
         setGohobi(event.target.value)
     }
 
-    const doSubmit = (event) => {
+    const doSubmit = async (event) => {
         var session = GetSession()
-        const data = CreateCycleRequest(try_, time_, gohobi, session)
+        event.preventDefault();
+        const data = await CreateCycleRequest(try_, time_, gohobi, session)
+        .then(data => {
+            return data
+        })
         if ('message' in data) {
             navigate('/login')
         }

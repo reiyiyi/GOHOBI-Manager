@@ -7,6 +7,7 @@ const Signup = () => {
     const [user_id, setUserId] = useState("")
     const [user_name, setUserName] = useState("")
     const [password, setPassword] = useState("")
+    // const [signupResponse, setSignupResponse] = useState([])
 
     const doChangeUserId = (event) => {
         setUserId(event.target.value)
@@ -18,10 +19,13 @@ const Signup = () => {
         setPassword(event.target.value)
     }
 
-    const doSubmit = (event) => {
-        const data = SignupRequest(user_id, user_name, password)
+    const doSubmit = async (event) => {
+        event.preventDefault();
+        const data = await SignupRequest(user_id, user_name, password)
+        .then(data => {
+            return data
+        })
         if (data.status == true) {
-            document.cookie = 'session=' + data.session;
             navigate('/login')
         }
         else {

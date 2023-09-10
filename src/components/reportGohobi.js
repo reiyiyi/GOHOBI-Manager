@@ -11,9 +11,13 @@ const ReportGohobi = () => {
         setUseGohobi(event.target.value)
     }
 
-    const doSubmit = (event) => {
+    const doSubmit = async (event) => {
         var session = GetSession()
-        const data = ReportGohobiRequest(use_gohobi, session)
+        event.preventDefault();
+        const data = await ReportGohobiRequest(use_gohobi, session)
+        .then(data => {
+            return data
+        })
         if ('message' in data) {
             navigate('/login')
         }
