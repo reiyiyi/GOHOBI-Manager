@@ -35,8 +35,9 @@ const ReportGohobi = () => {
                         <input type="number" className="form-control"
                             onChange={doChangeUseGohobi} />
                     </div>
-                    <input type="submit" className="btn btn-primary"
-                        value="Click" />
+                    <p>回も楽しんだ！</p>
+                    <input type="submit" className="btn btn-success"
+                        value="報告！" />
                 </form>
             </div>
         </div>

@@ -53,7 +53,7 @@ const Signup = () => {
                         <input type="password" className="form-control"
                             onChange={doChangePassword} />
                     </div>
-                    <input type="submit" className="btn btn-primary"
+                    <input type="submit" className="btn btn-success"
                         value="Click" />
                 </form>
             </div>

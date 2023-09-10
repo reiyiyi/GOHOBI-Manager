@@ -35,8 +35,9 @@ const ReportTry = () => {
                         <input type="number" className="form-control"
                             onChange={doChangeTryTime} />
                     </div>
-                    <input type="submit" className="btn btn-primary"
-                        value="Click" />
+                    <p>分も頑張った！</p>
+                    <input type="submit" className="btn btn-success"
+                        value="報告！" />
                 </form>
             </div>
         </div>
