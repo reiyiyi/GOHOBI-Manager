@@ -15,6 +15,9 @@ def ReportTryAPI(user_id, request_body):
         Key={
             "userId": {
                 "S": user_id
+            },
+            "cycleId": {
+                "S": "user_cycle"
             }
         },
         UpdateExpression="ADD totalTime :val",

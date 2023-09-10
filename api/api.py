@@ -20,7 +20,7 @@ def get_user_id(session):
         IndexName = SESSION_INDEX_NAME,
         KeyConditionExpression = "#se = :val",
         ExpressionAttributeNames= {
-        '#se' : 'Session',
+        '#se' : 'session',
         },
         ExpressionAttributeValues={":val": {"S": session}},
     )
@@ -35,6 +35,7 @@ def get_user_id(session):
 def handler(event, context):
     request_body = eval(event["body"])
     request_api_name = request_body["API"]
+    print(request_api_name)
     
     # 新規登録処理を行なうAPI
     if request_api_name == "SignupAPI":
@@ -47,6 +48,8 @@ def handler(event, context):
     
     #--------以下のAPIはログイン状態であることが必要--------
     session = request_body["session"]
+    if session == "":
+        session = "none"
     user_id = get_user_id(session)
     if not user_id:
         return {

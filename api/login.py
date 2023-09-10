@@ -12,7 +12,7 @@ dynamodb = boto3.client('dynamodb')
 
 # セッション文字列を生成する関数
 def create_session(user_id):
-    chars = string.ascii_letters + string.digits + string.punctuation
+    chars = string.ascii_letters + string.digits
     while True:
         length = secrets.choice(range(16, 20))
         session = "".join([secrets.choice(chars) for _ in range(length)])
@@ -21,7 +21,7 @@ def create_session(user_id):
             IndexName = SESSION_INDEX_NAME,
             KeyConditionExpression = "#se = :val",
             ExpressionAttributeNames= {
-                '#se' : 'Session',
+                '#se' : 'session',
             },
             ExpressionAttributeValues={":val": {"S": session}},
         )
@@ -36,11 +36,14 @@ def create_session(user_id):
             Key={
                 "userId": {
                     "S": user_id
+                },
+                "cycleId": {
+                "S": "user_cycle"
                 }
             },
             UpdateExpression="SET #se = :val",
             ExpressionAttributeNames= {
-                '#se' : 'Session',
+                '#se' : 'session',
             },
             ExpressionAttributeValues={":val": {"S": session}},
         )
@@ -58,9 +61,12 @@ def login_check(user_id, password):
     response = dynamodb.get_item(
         TableName=TABLE_NAME,
         Key={
-            'user_id': {
-                'S': user_id
+            "userId": {
+                "S": user_id
             },
+            "cycleId": {
+                "S": "user_cycle"
+            }
         }
     )
     # ユーザIDが間違っている場合はFalseを返す

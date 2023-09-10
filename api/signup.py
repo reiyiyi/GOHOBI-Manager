@@ -17,7 +17,7 @@ def hashing(data):
 def user_id_check(user_id):
     response = dynamodb.query(
         TableName=TABLE_NAME,
-        KeyConditionExpression = "#userId = :val",
+        KeyConditionExpression = "userId = :val",
         ExpressionAttributeValues={":val": {"S": user_id}},
     )
     
@@ -41,7 +41,7 @@ def SignupAPI(request_body):
                 "cycleId": {"S": "user_cycle"}, # 現在は1ユーザにつき1つのサイクルのみ作成可能
                 "userName": {"S": user_name},
                 "hashedPassword": {"S": hashed_password},
-                "session": {"S": ""},
+                "session": {"S": "none"},
                 "try": {"S": ""},
                 "time": {"N": "0"},
                 "gohobi": {"S": ""},
