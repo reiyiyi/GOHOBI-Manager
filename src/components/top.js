@@ -31,6 +31,7 @@ const Top = () => {
                 :
                 (
                     <div>
+                        <h4 className="my-3">このアプリを使ってごほうびライフを楽しもう！</h4>
                         <Link className="btn btn-success" to='/login'>ログイン </Link>
                         <Link className="btn btn-success" to='/signup'>新規登録 </Link>
                     </div>
