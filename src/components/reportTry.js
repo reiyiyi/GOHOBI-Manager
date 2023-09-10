@@ -11,9 +11,13 @@ const ReportTry = () => {
         setTryTime(event.target.value)
     }
 
-    const doSubmit = (event) => {
+    const doSubmit = async (event) => {
         var session = GetSession()
-        const data = ReportTryRequest(try_time, session)
+        event.preventDefault();
+        const data = await ReportTryRequest(try_time, session)
+        .then(data => {
+            return data
+        })
         if ('message' in data) {
             navigate('/login')
         }
